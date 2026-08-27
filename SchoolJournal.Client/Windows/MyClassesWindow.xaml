@@ -1,0 +1,68 @@
+﻿<Window x:Class="SchoolJournal.Client.Windows.MyClassesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="📖 Мои классы" Height="550" Width="800"
+        WindowStartupLocation="CenterOwner"
+        Background="#FFF5F0FF">
+
+    <Window.Resources>
+        <DropShadowEffect x:Key="ShadowEffect" BlurRadius="10" ShadowDepth="2" Opacity="0.08"/>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#FFE8F0F8" CornerRadius="15" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="📖 Мои классы" FontSize="24" FontWeight="Bold" Foreground="#FF4A6B7A"/>
+                <TextBlock x:Name="TeacherNameText" Text="Учитель: " FontSize="14" Foreground="#FF6B8A9A"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="ClassesItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White" CornerRadius="12" Padding="15" Margin="0,8,0,8"
+                                Effect="{StaticResource ShadowEffect}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="{Binding ClassName}" FontSize="18" FontWeight="Bold" Foreground="#FF4A6B7A"/>
+                                    <TextBlock Text="{Binding YearOfStudy, StringFormat=Год обучения: {0}}" FontSize="13" Foreground="#FF8A9AAA" Margin="0,5,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding StudentCount}" FontSize="24" FontWeight="Bold" Foreground="#FF4A6B7A" TextAlignment="Center"/>
+                                    <TextBlock Text="учеников" FontSize="12" Foreground="#FF8A9AAA" TextAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                    <Border Background="#FFE8F0F8" CornerRadius="10" Padding="10,5">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="📊 " FontSize="14"/>
+                                            <TextBlock Text="{Binding AverageGrade, StringFormat={}{0:F1}}" FontSize="16" FontWeight="Bold" Foreground="#FF4A6B7A"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button Grid.Row="2" Content="← Назад" Background="#FFE8D5F5" Foreground="#FF6B4A7A" 
+                FontSize="13" FontWeight="SemiBold" Height="35" Width="100"
+                HorizontalAlignment="Left" Margin="0,10,0,0" Click="BackButton_Click"/>
+    </Grid>
+</Window>

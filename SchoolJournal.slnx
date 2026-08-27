@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SchoolJournal.Client/SchoolJournal.Client.csproj" Id="97de0eeb-ed7d-4f27-901d-f39a86853959" />
+  <Project Path="SchoolJournal.Server/SchoolJournal.Server.csproj" />
+  <Project Path="SchoolJournal/SchoolJournal.csproj" Id="ea8f3c46-c0bd-4cf9-b8de-a8359384439b" />
+</Solution>

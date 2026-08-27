@@ -1,0 +1,60 @@
+﻿<Window x:Class="SchoolJournal.Client.Windows.TokensWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🪙 Жетоны" Height="550" Width="850"
+        WindowStartupLocation="CenterOwner"
+        Background="#FFF5F0FF">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#FFE8F0F8" CornerRadius="15" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="🪙 Мои жетоны" FontSize="24" FontWeight="Bold" Foreground="#FF4A6B7A"/>
+                <TextBlock x:Name="StudentInfoText" Text="Ученик: " FontSize="14" Foreground="#FF6B8A9A"/>
+                <Border Background="#FFD4E8F0" CornerRadius="10" Padding="12" Margin="0,10,0,0" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="💰 Баланс: " FontSize="16" FontWeight="SemiBold" Foreground="#FF4A6B7A"/>
+                        <TextBlock x:Name="BalanceText" Text="0" FontSize="24" FontWeight="Bold" Foreground="#FF2A6A4A"/>
+                        <TextBlock Text=" 🪙" FontSize="24"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="TransactionsItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#FFF8FAFC" CornerRadius="8" Padding="12" Margin="0,3,0,3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}" Foreground="#FF7A9AAA" VerticalAlignment="Center"/>
+                                <Border Grid.Column="1" Background="{Binding AmountColor}" CornerRadius="8" Padding="6,2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding AmountText}" FontWeight="Bold" Foreground="{Binding AmountTextColor}"/>
+                                </Border>
+                                <TextBlock Grid.Column="2" Text="{Binding Type}" Foreground="#FF6B8A9A" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                <TextBlock Grid.Column="3" Text="{Binding Reason}" Foreground="#FF8A9AAA" VerticalAlignment="Center" FontSize="12"/>
+                                <TextBlock Grid.Column="4" Text="{Binding Balance, StringFormat=Баланс: {0}}" Foreground="#FF4A6B7A" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="SemiBold"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button Grid.Row="2" Content="← Назад" Background="#FFE8D5F5" Foreground="#FF6B4A7A" 
+                FontSize="13" FontWeight="SemiBold" Height="35" Width="100"
+                HorizontalAlignment="Left" Margin="0,10,0,0" Click="BackButton_Click"/>
+    </Grid>
+</Window>
